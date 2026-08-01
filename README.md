@@ -8,6 +8,7 @@ This repository ships:
 
 - a Home Assistant custom integration
 - a sidebar panel for editing programs visually
+- a Lovelace custom card for dashboards
 - a local scheduler stored in Home Assistant storage
 - service actions to run, stop, and reload programs
 
@@ -24,6 +25,7 @@ Current capabilities:
 - support for `light`, `switch`, `valve`, `scene`, `script`, `cover`, `fan`,
   and `input_boolean`
 - manual run and stop from the panel or through Home Assistant services
+- dashboard card to monitor and run a program from Lovelace
 
 Current limitations:
 
@@ -81,6 +83,24 @@ service: garden_flow.run_program
 data:
   program_id: morning_irrigation
 ```
+
+## Dashboard Card
+
+The integration auto-loads a Lovelace custom card named
+`custom:garden-flow-program-card`, so you do not need to register a separate
+dashboard resource manually.
+
+Example:
+
+```yaml
+type: custom:garden-flow-program-card
+title: Riego jardin
+program_id: morning_irrigation
+show_blocks: true
+compact: false
+```
+
+If `program_id` is omitted, the card shows the first available program.
 
 ## Example Program Model
 

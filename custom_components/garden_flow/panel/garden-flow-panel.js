@@ -1254,4 +1254,6 @@ class GardenFlowPanel extends HTMLElement {
   }
 }
 
-customElements.define("garden-flow-panel", GardenFlowPanel);
+if (!customElements.get("garden-flow-panel")) {
+  customElements.define("garden-flow-panel", GardenFlowPanel);
+}

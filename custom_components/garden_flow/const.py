@@ -14,6 +14,7 @@ PANEL_URL_PATH = "garden-flow"
 PANEL_COMPONENT_NAME = "garden-flow-panel"
 PANEL_STATIC_URL = "/garden_flow_panel"
 PANEL_ENTRYPOINT = "garden-flow-panel.js"
+CARD_ENTRYPOINT = "garden-flow-card.js"
 
 DATA_RUNTIME = f"{DOMAIN}_runtime"
 DATA_STATIC_REGISTERED = f"{DOMAIN}_static_registered"

@@ -15,6 +15,7 @@ from .api import (
     async_unregister_services,
 )
 from .const import (
+    CARD_ENTRYPOINT,
     DATA_RUNTIME,
     DATA_STATIC_REGISTERED,
     DOMAIN,
@@ -53,6 +54,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     async_register_websocket_commands(hass)
     async_register_services(hass)
     await _async_register_panel(hass)
+    frontend.add_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}")
     return True
 
 
@@ -64,6 +66,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if frontend.async_panel_exists(hass, PANEL_URL_PATH):
         frontend.async_remove_panel(hass, PANEL_URL_PATH, warn_if_unknown=False)
 
+    frontend.remove_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}")
     async_unregister_services(hass)
     return True
 

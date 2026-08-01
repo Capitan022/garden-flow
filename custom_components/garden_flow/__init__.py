@@ -25,6 +25,7 @@ from .const import (
     PANEL_STATIC_URL,
     PANEL_TITLE,
     PANEL_URL_PATH,
+    VERSION,
 )
 from .scheduler import GardenFlowScheduler
 from .storage import GardenFlowStore
@@ -54,7 +55,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     async_register_websocket_commands(hass)
     async_register_services(hass)
     await _async_register_panel(hass)
-    frontend.add_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}")
+    frontend.add_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}?v={VERSION}")
     return True
 
 
@@ -66,7 +67,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if frontend.async_panel_exists(hass, PANEL_URL_PATH):
         frontend.async_remove_panel(hass, PANEL_URL_PATH, warn_if_unknown=False)
 
-    frontend.remove_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}")
+    frontend.remove_extra_js_url(hass, f"{PANEL_STATIC_URL}/{CARD_ENTRYPOINT}?v={VERSION}")
     async_unregister_services(hass)
     return True
 
@@ -88,7 +89,7 @@ async def _async_register_panel(hass: HomeAssistant) -> None:
         webcomponent_name=PANEL_COMPONENT_NAME,
         sidebar_title=PANEL_TITLE,
         sidebar_icon=PANEL_ICON,
-        module_url=f"{PANEL_STATIC_URL}/{PANEL_ENTRYPOINT}",
+        module_url=f"{PANEL_STATIC_URL}/{PANEL_ENTRYPOINT}?v={VERSION}",
         embed_iframe=False,
         require_admin=True,
     )

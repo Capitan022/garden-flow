@@ -1,0 +1,41 @@
+{
+  "title": "Garden Flow",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add Garden Flow",
+        "description": "Create the visual scheduler panel for outdoor automations.",
+        "data": {}
+      }
+    },
+    "abort": {
+      "already_configured": "Garden Flow is already configured."
+    }
+  },
+  "services": {
+    "run_program": {
+      "name": "Run program",
+      "description": "Run a Garden Flow program immediately.",
+      "fields": {
+        "program_id": {
+          "name": "Program ID",
+          "description": "The unique identifier of the program to start."
+        }
+      }
+    },
+    "stop_program": {
+      "name": "Stop program",
+      "description": "Stop a running Garden Flow program immediately.",
+      "fields": {
+        "program_id": {
+          "name": "Program ID",
+          "description": "The unique identifier of the running program to stop."
+        }
+      }
+    },
+    "reload": {
+      "name": "Reload programs",
+      "description": "Reload scheduled programs from storage."
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Garden Flow",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Agregar Garden Flow",
+        "description": "Crea el panel visual para programar automatizaciones exteriores.",
+        "data": {}
+      }
+    },
+    "abort": {
+      "already_configured": "Garden Flow ya esta configurado."
+    }
+  },
+  "services": {
+    "run_program": {
+      "name": "Ejecutar programa",
+      "description": "Ejecuta inmediatamente un programa de Garden Flow.",
+      "fields": {
+        "program_id": {
+          "name": "ID del programa",
+          "description": "Identificador unico del programa que se quiere iniciar."
+        }
+      }
+    },
+    "stop_program": {
+      "name": "Detener programa",
+      "description": "Detiene inmediatamente un programa de Garden Flow que este en ejecucion.",
+      "fields": {
+        "program_id": {
+          "name": "ID del programa",
+          "description": "Identificador unico del programa en ejecucion que se quiere detener."
+        }
+      }
+    },
+    "reload": {
+      "name": "Recargar programas",
+      "description": "Recarga los programas programados desde el almacenamiento."
+    }
+  }
+}

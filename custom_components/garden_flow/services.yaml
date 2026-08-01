@@ -1,0 +1,15 @@
+run_program:
+  fields:
+    program_id:
+      required: true
+      selector:
+        text:
+
+stop_program:
+  fields:
+    program_id:
+      required: true
+      selector:
+        text:
+
+reload: {}

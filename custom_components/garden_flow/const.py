@@ -1,6 +1,6 @@
 DOMAIN = "garden_flow"
 NAME = "Garden Flow"
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 
 DEFAULT_PROGRAM_START_TIME = "06:00"
 MAX_PROGRAM_MINUTES = 24 * 60

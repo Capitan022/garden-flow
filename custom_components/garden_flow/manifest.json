@@ -5,10 +5,11 @@
   "config_flow": true,
   "dependencies": [
     "frontend",
+    "http",
     "panel_custom"
   ],
   "documentation": "https://github.com/Capitan022/garden-flow",
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/Capitan022/garden-flow/issues",
-  "version": "0.1.1"
+  "version": "0.1.2"
 }

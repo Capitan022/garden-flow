@@ -38,10 +38,13 @@ class GardenFlowRuntimeData:
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
+    await _async_register_static_assets(hass)
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
+    await _async_register_static_assets(hass)
+
     storage = GardenFlowStore(hass)
     await storage.async_load()
 
@@ -72,13 +75,17 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     return True
 
 
-async def _async_register_panel(hass: HomeAssistant) -> None:
+async def _async_register_static_assets(hass: HomeAssistant) -> None:
     if not hass.data.get(DATA_STATIC_REGISTERED):
         panel_path = Path(__file__).parent / "panel"
         await hass.http.async_register_static_paths(
             [StaticPathConfig(PANEL_STATIC_URL, str(panel_path), False)]
         )
         hass.data[DATA_STATIC_REGISTERED] = True
+
+
+async def _async_register_panel(hass: HomeAssistant) -> None:
+    await _async_register_static_assets(hass)
 
     if frontend.async_panel_exists(hass, PANEL_URL_PATH):
         return
